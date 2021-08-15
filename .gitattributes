@@ -1,0 +1,2 @@
+AdaFruit_Mono_enclosed_speaker.png filter=lfs diff=lfs merge=lfs -text
+RPi_mount.png filter=lfs diff=lfs merge=lfs -text
