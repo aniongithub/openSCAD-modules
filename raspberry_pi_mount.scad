@@ -5,13 +5,13 @@ include <rectangular_mount.scad>
 color("lightgreen", 1.0)
 rectangular_mount(base_rect_x = 85, base_rect_y = 56, base_height = 2.5,
     mount_rect_x = 58, mount_rect_y = 49, 
-    mount_offset_x = (85 - (29 + 29 + 3.5 + 3.5)) / 2 + 1,
-    mount_offset_y = -3.5 / 2 + 0.5, 
+    mount_offset_x = (85 - (29 + 29 + 3.5 + 3.5)) / 2,
+    mount_offset_y = 0, 
     mount_dia = 2.5, mount_pitch = 0.45, mount_height = 14,
     standoff_height = 4);
 
 // Reference model
-translate([0, 0, 1.5])
 rotate([0, 0, 180])
+translate([0.25, -1, 1.5])
 color("gray", 0.5)
-import("models/Raspberry_Pi_4_B.stl");
+import("models/Raspberry_pi_4.stl");
