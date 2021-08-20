@@ -6,7 +6,9 @@ MOUNT_PITCH = 0.5;
 MOUNT_HEIGHT = 10;
 MOUNT_SIDES = 36;
 
-STANDOFF_DIA = 4;
+STANDOFF_TOP_DIA = 4;
+STANDOFF_BOTTOM_DIA = STANDOFF_TOP_DIA * 2;
+
 STANDOFF_HEIGHT = 3;
 STANDOFF_SIDES = 36;
 
@@ -22,8 +24,8 @@ include <threads.scad>
 
 module rectangular_mount(mount_rect_x = MOUNT_RECT_X, mount_rect_y = MOUNT_RECT_Y, mount_offset_x = 0, mount_offset_y = 0, mount_rotation = MOUNT_ROTATION,
     mount_height = MOUNT_HEIGHT, mount_pitch = MOUNT_PITCH, mount_sides = MOUNT_SIDES, mount_dia = MOUNT_DIA,
-    standoff_height = STANDOFF_HEIGHT, standoff_sides = STANDOFF_SIDES, standoff_dia = STANDOFF_DIA,
-    base_rect_x = (MOUNT_RECT_X + STANDOFF_DIA + BASE_CORNER_RADIUS), base_rect_y = (MOUNT_RECT_Y + STANDOFF_DIA + BASE_CORNER_RADIUS),
+    standoff_height = STANDOFF_HEIGHT, standoff_sides = STANDOFF_SIDES, standoff_top_dia = STANDOFF_TOP_DIA, standoff_bottom_dia = STANDOFF_BOTTOM_DIA,
+    base_rect_x = (MOUNT_RECT_X + STANDOFF_BOTTOM_DIA + BASE_CORNER_RADIUS), base_rect_y = (MOUNT_RECT_Y + STANDOFF_BOTTOM_DIA + BASE_CORNER_RADIUS),
     base_height = BASE_HEIGHT, base_corner_radius = BASE_CORNER_RADIUS, 
     use_threads = USE_THREADS)
 {
@@ -40,7 +42,7 @@ module rectangular_mount(mount_rect_x = MOUNT_RECT_X, mount_rect_y = MOUNT_RECT_
                     cylinder(mount_height, d = mount_dia, $fn = mount_sides);
                 else
                     metric_thread(mount_dia, mount_pitch, mount_height);
-                cylinder(standoff_height, d = standoff_dia, $fn = standoff_sides);
+                cylinder(standoff_height, d1 = standoff_bottom_dia, d2 = standoff_top_dia, $fn = standoff_sides);
             }
         }
         rotate([0, 0, mount_rotation])
@@ -52,7 +54,7 @@ module rectangular_mount(mount_rect_x = MOUNT_RECT_X, mount_rect_y = MOUNT_RECT_
                     cylinder(mount_height, d = mount_dia, $fn = mount_sides);
                 else
                     metric_thread(mount_dia, mount_pitch, mount_height);
-                cylinder(standoff_height, d = standoff_dia, $fn = standoff_sides);
+                cylinder(standoff_height, d1 = standoff_bottom_dia, d2 = standoff_top_dia, $fn = standoff_sides);
             }
         }
         rotate([0, 0, mount_rotation])
@@ -64,7 +66,7 @@ module rectangular_mount(mount_rect_x = MOUNT_RECT_X, mount_rect_y = MOUNT_RECT_
                     cylinder(mount_height, d = mount_dia, $fn = mount_sides);
                 else
                     metric_thread(mount_dia, mount_pitch, mount_height);
-                cylinder(standoff_height, d = standoff_dia, $fn = standoff_sides);
+                cylinder(standoff_height, d1 = standoff_bottom_dia, d2 = standoff_top_dia, $fn = standoff_sides);
             }
         }
         rotate([0, 0, mount_rotation])
@@ -76,7 +78,7 @@ module rectangular_mount(mount_rect_x = MOUNT_RECT_X, mount_rect_y = MOUNT_RECT_
                     cylinder(mount_height, d = mount_dia, $fn = mount_sides);
                 else
                     metric_thread(mount_dia, mount_pitch, mount_height);
-                cylinder(standoff_height, d = standoff_dia, $fn = standoff_sides);
+                cylinder(standoff_height, d1 = standoff_bottom_dia, d2 = standoff_top_dia, $fn = standoff_sides);
             }
         }
    }
